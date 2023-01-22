@@ -1,0 +1,128 @@
+django-admin startproject naziv
+python manage.py startapp meetups
+
+add meetups to settings.py in basic project installed apps
+path('', include('meetups.urls')) #prefix to urls.py
+
+
+python3 manage.py runserver
+
+if we want html files:
+templates -> create template folder!
+inside folder create app_name folder
+
+injecting css in our html file
+        <link rel="stylesheet" href="{% static 'meetups/styles/base.css' %}">
+        {% load static %}
+
+        <h1>All meetups</h1>
+        <p>Hello world</p>
+        {% if show_meetups %}
+            {% for meetup_item in meetups%}
+                <p>{{meetup_item.title}}</p>
+            {% endfor %}
+            <h2>{{meetups.0.title}}</h2>
+        {% else %}
+            <p>No meetups found</p>
+        {% endif %}
+
+
+<a href="/meetups/{{ meetup_item.slug }}" class="btn">More Details</a>
+
+href="{% url %}"
+
+blocks in template-- TEMPLATE INHERITANCE
+
+DATA
+1. Temporary data 
+    - user input, selected blog post - matters at moment
+    - store in memory (Variables)
+2. Semi-Persistent data
+    - User Authentication Status
+    - Data is stored for a longer time but may be lost (can be re-created)
+    - Store in Browser, Cookies, Local Storage
+3. Persistent data
+    - Persostent Data
+    - Blog Posts, Orders
+    - Data is stored forever and must not be lost
+    - Store in database
+
+
+Models
+-automatically create one table for a model
+
+Creating tables:
+1. In settings.py App must 
+python3 manage.py makemigrations
+ython3 manage.py migrate -- run migrations
+
+Administration feature
+http://localhost:8000/admin/ --logi field
+python3 manage.py createsuperuser
+
+username: max
+Email address: max@test.com
+password: admin1234 
+
+Registering data:
+
+admin.py > admin.site.register(Meetup)
+
+Uploading image
+-do not store entire field in database
+
+>>settings.py
+#BASE_DIR = Path(__file__).resolve().parent.parent > apsolute path to project directory
+MEDIA_ROOT = BASE_DIR / 'uploads'
+MEDIA_URL = '/files/'
+
+>>models.py
+    image = models.ImageField(upload_to='images')
+
+sudo apt install python3-pil --Pillow package to work with images
+
+**Recerate migrations after changing
+1. Clean database
+2. python3 manage.py makemigrations
+   --> option 1, all entities must have an image
+3. type 'test' 
+
+View uploaded file:
+>>settings.py
+>> main urls.py
+
+>>admon.py
+admin.site.register(Meetup, MeetupAdmin)
+
+automatically generated values in fields:
+    prepopulated_fields = {'slug' : ('title',)}
+
+
+Relations:
+1. One-to-Many
+One book has one author
+One autor has multiple books
+2. One-to-One
+One author has one address
+One address belongs to one author
+3. Many-to-Many
+Book can be published in many contries
+A country can publish many books
+
+One-to-Many
+    location = models.ForeignKey(Location)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE) -- if the location deleted the meetup will also be deleted
+                                                            .SET_NULL -- if the location deleted it will be set to SET_NULL
+Form creating:
+
+1. add forms.py 
+2. Tu use form in my view:
+    - go to views.py, render form
+    - .html>>       <ul>
+                        {{ form.as_ul}} // as_p -- paragraph
+                    </ul>
+3. <form action="{% url 'meetup-details' meetup.slug%}" method="POST">
+    -error CROSS attack
+4.                     {% csrf_token %}
+5. Do different thing when we do POST request than we do with GET request
+
