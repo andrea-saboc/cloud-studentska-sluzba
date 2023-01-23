@@ -1,9 +1,5 @@
 FROM openjdk:19
-
 EXPOSE 8080
-
-ARG JAR_FILE=./*.jar
-
-COPY ./uns.jar uns.jar
-
-ENTRYPOINT ["java","-jar","/uns.jar" ]
+ARG JAR_FILE=target/uns-0.0.1-SNAPSHOT.jar
+ADD ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
