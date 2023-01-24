@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip install -r requirements.txt
+RUN pip install -r fakultet2/requirements.txt
 
 EXPOSE 8002
 
