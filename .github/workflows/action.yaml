@@ -16,12 +16,6 @@ jobs:
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: Build the docker image uns
-        run: docker build . --file uns/Dockerfile -tag andreasaboc/uns
-      - name: Build the docker image pmf
-        run: docker build . --file fakultet/Dockerfile -tag andreasaboc/pmf
-      - name: Build the docker image ftn
-        run: docker build . --file fakultet1/Dockerfile -tag andreasaboc/ftn
-      - name: Build the docker image pravni
-        run: docker build . --file fakultet2/Dockerfile -tag andreasaboc/pravni
+        run: docker build --file uns/Dockerfile -tag andreasaboc/uns
       - name: Docker push
         run: docker push ${{secrets.DOCKER_USERNAME}}/uns
