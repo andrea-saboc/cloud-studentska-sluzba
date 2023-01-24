@@ -1,0 +1,11 @@
+/home/user/Desktop/cloud/cloud-studentska-sluzba/uns/src/main/java/com/project/uns/model/Student.java
+/home/user/Desktop/cloud/cloud-studentska-sluzba/uns/src/main/java/com/project/uns/services/StudentService.java
+/home/user/Desktop/cloud/cloud-studentska-sluzba/uns/src/main/java/com/project/uns/services/ProfessorService.java
+/home/user/Desktop/cloud/cloud-studentska-sluzba/uns/src/main/java/com/project/uns/UnsApplication.java
+/home/user/Desktop/cloud/cloud-studentska-sluzba/uns/src/main/java/com/project/uns/mapper/Mapper.java
+/home/user/Desktop/cloud/cloud-studentska-sluzba/uns/src/main/java/com/project/uns/model/Professor.java
+/home/user/Desktop/cloud/cloud-studentska-sluzba/uns/src/main/java/com/project/uns/controllers/ProfessorController.java
+/home/user/Desktop/cloud/cloud-studentska-sluzba/uns/src/main/java/com/project/uns/repository/ProfessorRepository.java
+/home/user/Desktop/cloud/cloud-studentska-sluzba/uns/src/main/java/com/project/uns/dto/RegisterDto.java
+/home/user/Desktop/cloud/cloud-studentska-sluzba/uns/src/main/java/com/project/uns/repository/StudentRepository.java
+/home/user/Desktop/cloud/cloud-studentska-sluzba/uns/src/main/java/com/project/uns/controllers/StudentController.java
