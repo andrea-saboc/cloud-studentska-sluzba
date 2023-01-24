@@ -8,8 +8,5 @@ RUN pip install -r fakultet/requirements.txt
 
 EXPOSE 8000
 
-#CMD python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8081
 
-RUN chmod +x /app/skripta.sh
-
-ENTRYPOINT [ "/app/skripta.sh" ]
+CMD python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000
