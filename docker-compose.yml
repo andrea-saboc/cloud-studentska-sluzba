@@ -22,12 +22,27 @@ services:
     ports:
       - "8000:8000"
 
+  ftn:
+    #image: ftn
+    container_name: ftn
+    build: ./fakultet1
+    restart: on-failure
+    ports:
+      - "8001:8001"
+
+  pravni:
+    #image: ftn
+    container_name: ftn
+    build: ./fakultet2
+    restart: on-failure
+    ports:
+      - "8002:8002"
+
+
   uns:
     image: uns
     container_name: uns
-    build:
-      context: .
-      dockerfile: ./uns/Dockerfile
+    build: ./uns
     restart: on-failure
     ports:
       - "8080:8080"
