@@ -12,7 +12,7 @@ jobs:
       - name: docker login
         env:
           DOCKER_USER: ${{secrets.DOCKERHUB_USERNAME}}
-          DOCKER_PASSWORD: ${{secrets.DOCKERHUB_ACCEESS_TOKEN}}
+          DOCKER_PASSWORD: ${{secrets.DOCKERHUB_ACCESS_TOKEN}}
         run: |
           echo ${{secrets.DOCKERHUB_USERNAME}}
           docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_ACCEESS_TOKEN}} https://hub.docker.com
