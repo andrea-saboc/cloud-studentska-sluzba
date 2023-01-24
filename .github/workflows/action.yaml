@@ -16,6 +16,7 @@ jobs:
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: Build the docker image uns
-        run: docker build --file ./uns/Dockerfile -tag andreasaboc/uns
+        context: ./uns
+        run: docker build --file Dockerfile -tag andreasaboc/uns
       - name: Docker push
         run: docker push ${{secrets.DOCKER_USERNAME}}/uns
