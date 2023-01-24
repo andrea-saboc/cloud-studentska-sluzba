@@ -12,7 +12,7 @@ jobs:
           DOCKER_USER: ${{secrets.DOCKERHUB_USERNAME}}
           DOCKER_PASSWORD: ${{secrets.DOCKERHUB_ACCEESS_TOKEN}}
         run: |
-          docker login -u $DOCKER_USER -p DOCKER_PASSWORD
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: Build the docker image uns
         run: docker build ./uns --file Dockerfile -tag andreasaboc/uns
       - name: Build the docker image pmf
