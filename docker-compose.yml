@@ -15,34 +15,33 @@ services:
       retries: 5
 
   pmf:
-    #image: pmf
+    image: andreasaboc/pmf
     container_name: pmf
-    build: ./fakultet
     restart: on-failure
     ports:
       - "8000:8000"
 
   ftn:
-    #image: ftn
+    image: andreasaboc/ftn
     container_name: ftn
-    build: ./fakultet1
+    #build: ./fakultet1
     restart: on-failure
     ports:
       - "8001:8001"
 
   pravni:
-    #image: ftn
-    container_name: ftn
-    build: ./fakultet2
+    image: andreasaboc/pravni
+    container_name: pravni
+    #build: ./fakultet2
     restart: on-failure
     ports:
       - "8002:8002"
 
 
   uns:
-    image: uns
+    image: andreasaboc/uns
     container_name: uns
-    build: ./uns
+    #build: ./uns
     restart: on-failure
     ports:
       - "8080:8080"
