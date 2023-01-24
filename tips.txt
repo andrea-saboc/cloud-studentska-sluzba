@@ -1,5 +1,5 @@
 django-admin startproject naziv
-python manage.py startapp meetups
+python3 manage.py startapp meetups
 
 add meetups to settings.py in basic project installed apps
 path('', include('meetups.urls')) #prefix to urls.py

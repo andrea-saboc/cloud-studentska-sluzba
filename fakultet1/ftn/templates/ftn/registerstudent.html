@@ -1,51 +1,34 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>PMF - Homepage</title>
+        <title>FTN - Register Student</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     </head>
     <body style="padding: 10%; padding-top: 5%; background-color: #82a9a9" >
-        <div style="display: flex; border-radius: 20px; flex-direction: row; padding: 5%; background-color: #248a8a; width: 80%; height: 80%" margin="10%">
-            <div style="width: 30%; height: 100%">
-                <img src="{% static 'images/index.jpeg' %}">
-
-            </div>
-            <div style="width: 70%; display: flex; flex-direction: column">
-                <a href="{% url 'register' %}" style="width: 100%">
-                <button type="button" class="btn btn-info" style="width: 100%">
-                    Dodaj studenta
-                </button>
-                </a>
-
-                <br>
-                <div style="height: 10px"></div>
-                <a href="{% url 'registerp' %}" style="width: 100%">
-                <button type="button" class="btn btn-info"  style="width: 100%">
-                        Dodaj profesora
-                </button>
-                </a>
-
+    <div style="border-radius: 20px; flex-direction: row; padding: 5%; background-color: #248a8a; width: 80%; height: 80%; margin=10%">
+                <form action="{% url 'register' %}" method="POST">
+            {% csrf_token %}
+            <ul>
+                {{ form.as_ul }}
+            </ul>
+            <div id="registration-actions">
+                <button>Register</button>
             </div>
 
+        </form>
+    </div>
 
 
-        </div>
-        
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-      
     </body>
 </html>
