@@ -88,7 +88,7 @@ def index(request):
                 "surname" : "%s" % student['surname'],
                 "jmbg" : "%s" % student['jmbg'],
             }
-            response = requests.post('http://uns:8080/students',
+            response = requests.post('http://uns:80/students',
                                      headers={'Content-Type': 'application/json'}, json=stJSON)
             print("response before trying")
             print(response)
