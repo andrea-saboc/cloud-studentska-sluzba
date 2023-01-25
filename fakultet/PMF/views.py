@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from PIL import Image
 import json
 import  requests
 
@@ -20,18 +21,17 @@ def register_professor(request):
 
     elif request.method == 'POST':
         print("here")
-        registration_form = RegistrationProfessorForm(request.POST)
+        registration_form = RegistrationProfessorForm(request.POST, request.FILES)
 
         if registration_form.is_valid():
             professor= registration_form.cleaned_data
             pr = Professor(
+                title=professor['title'],
                 name=professor['name'],
                 surname=professor['surname'],
                 jmbg=professor['jmbg'],
                 birthDate=professor['birthDate'],
                 image=professor['image']
-                #indexNumber = student['indexNumber']
-
             )
             prJSON = {
                 "name": "%s" % professor['name'],
@@ -39,16 +39,16 @@ def register_professor(request):
                 "jmbg": "%s" % professor['jmbg'],
             }
             pr.save()
-            """
-            #response = requests.post('http://uns:8080/professors',
-            #                         headers={'Content-Type': 'application/json'}, json=prJSON)
+
+            response = requests.post('http://localhost:8080/professors',
+                                   headers={'Content-Type': 'application/json'}, json=prJSON)
             print("response before trying")
             print(response)
             try:
                 # print("\nStatus code" + response.status_code)
                 if (response.status_code == 200):
                     pr.save()
-                    print("Student is registered!")
+                    print("Professor is registered!")
                     registration_form = RegistrationStudentForm()
                 elif (response.status_code == 409):
                     print("Already exists!")
@@ -58,7 +58,6 @@ def register_professor(request):
                 return render(request, 'PMF/homepage.html')
             except:
                 return HttpResponse(response)
-                """
             return render(request, 'PMF/homepage.html')
 
 def index(request):
@@ -69,27 +68,31 @@ def index(request):
             "form" : registration_form
         })
     elif request.method=='POST':
-        registration_form = RegistrationStudentForm(request.POST)
+        registration_form = RegistrationStudentForm(request.POST, request.FILES)
         
         if registration_form.is_valid():
             student = registration_form.cleaned_data
+            print("cleaned data:\n")
+            #print(student['image'].image)
             st = Student(
                 name = student['name'],
                 surname = student['surname'],
                 jmbg = student['jmbg'],
-                #indexNumber = student['indexNumber']
+                indexNumber = student['indexNumber'],
+                image = student['image'],
+                birthDate = student['birthDate'],
             )
+            print(st)
             stJSON = {
                 "name" : "%s" % student['name'],
                 "surname" : "%s" % student['surname'],
                 "jmbg" : "%s" % student['jmbg'],
             }
-            response = requests.post('http://uns:8080/students',
+            response = requests.post('http://localhost:8080/students',
                                      headers={'Content-Type': 'application/json'}, json=stJSON)
             print("response before trying")
             print(response)
             try:
-                #print("\nStatus code" + response.status_code)
                 if(response.status_code == 200):
                     st.save()
                     print("Student is registered!")

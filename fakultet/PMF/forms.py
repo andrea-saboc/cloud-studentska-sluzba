@@ -1,5 +1,5 @@
 from django import forms
-from .models import Student, Professor
+from .models import Student, Professor, TITLE_CHOICES
 
 class RegistrationStudentForm(forms.Form):
     #class Meta:
@@ -12,7 +12,8 @@ class RegistrationStudentForm(forms.Form):
         indexNumber = forms.CharField(label="Index number", max_length=50)
 
 class RegistrationProfessorForm(forms.Form):
-    title = forms.RadioSelect(choices=Professor.Title)
+    model=Professor
+    title = forms.ChoiceField(label="title",choices=TITLE_CHOICES)
     name = forms.CharField(label="Professor's name", max_length=60)
     surname = forms.CharField(label="Professor's surname", max_length=100)
     jmbg = forms.CharField(label="JMBG", max_length=20)
