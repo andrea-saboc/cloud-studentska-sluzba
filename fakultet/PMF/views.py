@@ -53,12 +53,9 @@ def register_professor(request):
                 elif (response.status_code == 409):
                     print("Already exists!")
                 else:
-                    print("Error!")
-
-                return render(request, 'PMF/homepage.html')
-            except:
+                    return HttpResponse(response)
+            finally:
                 return HttpResponse(response)
-            return render(request, 'PMF/homepage.html')
 
 def index(request):
     sudents = Student.objects.all
@@ -103,6 +100,6 @@ def index(request):
                     print("Error!")
 
 
-                return render(request, 'PMF/homepage.html')
-            except:
+                return HttpResponse(response)
+            finally:
                 return HttpResponse(response)

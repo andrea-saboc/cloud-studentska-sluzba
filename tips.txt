@@ -126,3 +126,5 @@ Form creating:
 4.                     {% csrf_token %}
 5. Do different thing when we do POST request than we do with GET request
 
+
+
