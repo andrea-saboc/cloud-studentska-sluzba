@@ -15,7 +15,7 @@ services:
       retries: 5
 
   pmf:
-    image: andreasaboc/pmf
+    image: andreasaboc/pmf:latest
     container_name: pmf
     restart: on-failure
     ports:

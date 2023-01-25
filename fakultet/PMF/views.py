@@ -19,6 +19,7 @@ def register_professor(request):
         })
 
     elif request.method == 'POST':
+        print("here")
         registration_form = RegistrationProfessorForm(request.POST)
 
         if registration_form.is_valid():
@@ -27,15 +28,20 @@ def register_professor(request):
                 name=professor['name'],
                 surname=professor['surname'],
                 jmbg=professor['jmbg'],
-                # indexNumber = student['indexNumber']
+                birthDate=professor['birthDate'],
+                image=professor['image']
+                #indexNumber = student['indexNumber']
+
             )
             prJSON = {
                 "name": "%s" % professor['name'],
                 "surname": "%s" % professor['surname'],
                 "jmbg": "%s" % professor['jmbg'],
             }
-            response = requests.post('http://uns:8080/professors',
-                                     headers={'Content-Type': 'application/json'}, json=prJSON)
+            pr.save()
+            """
+            #response = requests.post('http://uns:8080/professors',
+            #                         headers={'Content-Type': 'application/json'}, json=prJSON)
             print("response before trying")
             print(response)
             try:
@@ -52,6 +58,8 @@ def register_professor(request):
                 return render(request, 'PMF/homepage.html')
             except:
                 return HttpResponse(response)
+                """
+            return render(request, 'PMF/homepage.html')
 
 def index(request):
     sudents = Student.objects.all
