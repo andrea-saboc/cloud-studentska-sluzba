@@ -17,7 +17,7 @@ def homepage(request):
 def register_professor(request):
     if request.method == 'GET':
         registration_form = RegistrationProfessorForm()
-        return render(request, 'ftn/register-professor.html', {
+        return render(request, 'ftn/registerprofessor.html', {
             "form": registration_form
         })
 
@@ -64,7 +64,7 @@ def index(request):
     sudents = Student.objects.all
     if request.method == 'GET':
         registration_form = RegistrationStudentForm()
-        return render(request, 'ftn/index.html', {
+        return render(request, 'ftn/registerstudent.html', {
             "form": registration_form
         })
     elif request.method == 'POST':

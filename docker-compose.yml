@@ -41,7 +41,7 @@ services:
     ports:
       - "8002:8002"
     volumes:
-      - ./pictures_ftn:/app/uploads/images
+      - ./pictures_pravni:/app/uploads/images
 
 
   uns1:
