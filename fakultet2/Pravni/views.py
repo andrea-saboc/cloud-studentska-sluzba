@@ -40,7 +40,6 @@ def register_professor(request):
                 "surname": "%s" % professor['surname'],
                 "jmbg": "%s" % professor['jmbg'],
             }
-            pr.save()
 
             response = requests.post('http://nginx:80/professors',
                                      headers={'Content-Type': 'application/json'}, json=prJSON)
