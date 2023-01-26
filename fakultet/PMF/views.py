@@ -48,12 +48,13 @@ def register_professor(request):
                 # print("\nStatus code" + response.status_code)
                 if (response.status_code == 200):
                     pr.save()
-                    print("Professor is registered!")
+                    response="Professor is registered!"
                     registration_form = RegistrationStudentForm()
                 elif (response.status_code == 409):
-                    print("Already exists!")
+                    response="Already exists!"
                 else:
-                    return HttpResponse(response)
+                    response="Error!"
+                return HttpResponse(response)
             finally:
                 return HttpResponse(response)
 
@@ -92,12 +93,12 @@ def index(request):
             try:
                 if(response.status_code == 200):
                     st.save()
-                    print("Student is registered!")
+                    response="Student is registered!"
                     registration_form = RegistrationStudentForm()
                 elif(response.status_code==409):
-                    print("Already exists!")
+                    response="Already exists!"
                 else:
-                    print("Error!")
+                    response="Error!"
 
 
                 return HttpResponse(response)
